@@ -5,7 +5,6 @@ services:
     container_name: m1
     volumes:
       - ../config/mysql-m1/:/etc/mysql/:ro
-      #- /etc/localtime:/etc/localtime:ro
       - ../config/hosts:/etc/hosts:ro
     ports:
       - "3309:3306"
@@ -14,17 +13,16 @@ services:
         ipv4_address: 172.18.0.2
     ulimits:
       nproc: 65535
-    hostname: m1
-    mem_limit: 512m
+    hostname: 1536m
+    mem_limit:  
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: m1test
+      MYSQL_ROOT_PASSWORD: uotohl.com
   s1:
       build: ./mysql_s1
       container_name: s1
       volumes:
         - ../config/mysql-s1/:/etc/mysql/:ro
-       # - /etc/localtime:/etc/localtime:ro
         - ../config/hosts:/etc/hosts:ro
       ports:
         - "3307:3306"
@@ -36,16 +34,15 @@ services:
       ulimits:
         nproc: 65535
       hostname: s1
-      mem_limit: 512m
+      mem_limit: 1536m
       restart: always
       environment:
-        MYSQL_ROOT_PASSWORD: s1test
+        MYSQL_ROOT_PASSWORD: uotohl.com
   s2:
     build: ./mysql_s2
     container_name: s2
     volumes:
       - ../config/mysql-s2/:/etc/mysql/:ro
-      #- /etc/localtime:/etc/localtime:ro
       - ../config/hosts:/etc/hosts:ro
     ports:
       - "3308:3306"
@@ -57,10 +54,10 @@ services:
     ulimits:
       nproc: 65535
     hostname: s2
-    mem_limit: 512m
+    mem_limit: 1536m
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: s2test
+      MYSQL_ROOT_PASSWORD: uotohl.com
   mycat:
     build: ./mycat
     container_name: mycat
@@ -82,7 +79,7 @@ services:
     ulimits:
       nproc: 65535
     hostname: mycat
-    mem_limit: 512m
+    mem_limit: 1536m
     restart: always
 networks:
   mysql:
